@@ -1,12 +1,12 @@
-# Swas Kaushal — Personal Portfolio Website
+# Swas Kaushal - Personal Portfolio Website
 
-A modern, responsive personal/academic website for **Swas Kaushal** — PhD researcher in
+A modern, responsive personal/academic website for **Swas Kaushal** - PhD researcher in
 Plant Breeding & Genetics, Phenomics, Quantitative Genetics, and AI.
 
 🔗 **Live site (after deploy):** https://swaskaushal.github.io
 
 Built as a static site (HTML + CSS + vanilla JS) so it's fast, free to host on
-**GitHub Pages**, and easy to update — all content lives in simple JSON/Markdown files.
+**GitHub Pages**, and easy to update - all content lives in simple JSON/Markdown files.
 
 ---
 
@@ -22,7 +22,7 @@ Built as a static site (HTML + CSS + vanilla JS) so it's fast, free to host on
 | **Insights** | Cool charts: research focus, publications/year, skills |
 | **Blog** | Weekly posts written in Markdown, opened in a modal reader |
 | **Awards** | Honours & recognition with the story behind each |
-| **Mentorship** | People you mentor — photo, name, role & university |
+| **Mentorship** | People you mentor - photo, name, role & university |
 | **Gallery** | Photo wall with captions & dates (click to enlarge) |
 | **Contact** | All your social/professional links |
 | Extras | Dark/light theme, scroll progress, mobile menu, animations |
@@ -38,7 +38,7 @@ Swaskaushal.github.io/
 ├── assets/
 │   ├── css/style.css       ← all styling + theme
 │   ├── js/main.js          ← all interactions & data loading
-│   └── Swas_Kaushal_CV.pdf ← (add your CV here — see below)
+│   └── Swas_Kaushal_CV.pdf ← (add your CV here - see below)
 └── data/                   ← ✏️ EDIT THESE to update the site
     ├── journey.json        ← timeline entries
     ├── projects.json       ← project cards
@@ -54,7 +54,7 @@ Swaskaushal.github.io/
 
 ---
 
-## 🚀 Everyday updates — the easy way
+## 🚀 Everyday updates - the easy way
 
 Two PowerShell helpers live in the repo root. Open PowerShell in this folder and run:
 
@@ -122,7 +122,7 @@ Edit `data/publications.json`:
 > Your name is automatically **bold-highlighted** in the author list.
 
 ### Add an award
-Edit `data/awards.json` — copy a block and fill in `title`, `org`, `year`, `story`, `icon`.
+Edit `data/awards.json` - copy a block and fill in `title`, `org`, `year`, `story`, `icon`.
 
 ### Add a weekly blog post (2 steps)
 1. Create a markdown file in `data/blog/`, e.g. `2026-07-06-my-post.md`.

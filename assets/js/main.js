@@ -141,8 +141,13 @@ async function loadJourney() {
       <div class="tl-item" data-type="${it.type || 'research'}">
         <span class="tl-date">${escapeHtml(it.date)}</span>
         <div class="tl-card">
-          <h3>${escapeHtml(it.title)}</h3>
-          <p class="tl-org">${escapeHtml(it.org || '')}</p>
+          <div class="tl-head">
+            ${it.logo ? `<span class="tl-logo"><img src="${escapeAttr(it.logo)}" alt="${escapeAttr(it.org || '')} logo" loading="lazy"></span>` : ''}
+            <div class="tl-head-text">
+              <h3>${escapeHtml(it.title)}</h3>
+              <p class="tl-org">${escapeHtml(it.org || '')}</p>
+            </div>
+          </div>
           <p>${escapeHtml(it.description || '')}</p>
         </div>
       </div>`).join('');
@@ -410,15 +415,6 @@ async function initCharts() {
       datasets: [{ label: 'Publications', data: cfg.pubsByYear.values, backgroundColor: c.brand, borderRadius: 6 }]
     },
     options: barOpts(c, false)
-  });
-
-  window.__charts.skills = new Chart(document.getElementById('chart-skills'), {
-    type: 'bar',
-    data: {
-      labels: cfg.skills.labels,
-      datasets: [{ label: 'Proficiency', data: cfg.skills.values, backgroundColor: cfg.skills.values.map((_, i) => i % 2 ? c.brand2 : c.brand), borderRadius: 6 }]
-    },
-    options: barOpts(c, true)
   });
 }
 function chartColors() {
