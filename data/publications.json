@@ -1,12 +1,39 @@
 [
   {
+    "title": "Wheat spike and spikelet detection and counting from high-resolution digital imagery using YOLO with Oriented Bounding Boxes",
+    "authors": "Ghimire, H., Maimaitijiang, M., Thapa, S., Kaushal, S., Koupal, D. J., Billah, M. M., Poudel, K., Sehgal, S., Singh, M., Subedi, S., Sehgal, S. K.",
+    "venue": "Scientific Reports (Nature)",
+    "year": 2026,
+    "link": "https://www.nature.com/articles/s41598-026-55761-w",
+    "pdf": "",
+    "doi": "10.1038/s41598-026-55761-w"
+  },
+  {
+    "title": "Predicting Wheat Yield and Grain Quality with UAV Multispectral Imagery and Deep Learning",
+    "authors": "Billah, M. M., Maimaitijiang, M., Kaushal, S., Millett, B., Khan, S. N., Halder, J., Kleinjan, J., Sehgal, S. K.",
+    "venue": "Frontiers in Plant Science, 17, 1812052",
+    "year": 2026,
+    "link": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2026.1812052/full",
+    "pdf": "",
+    "doi": "10.3389/fpls.2026.1812052"
+  },
+  {
     "title": "UAV-based deep transfer learning to improve grain yield prediction in winter wheat across temporal and spatial variability",
     "authors": "Kaushal, S., Billah, M. M., Singh, M., Koupal, D., Sitaula, P. R., Halder, J., Sidhu, J., Maimaitijiang, M., Sehgal, S. K.",
     "venue": "The Plant Phenome Journal, 9(1), e70085",
     "year": 2026,
-    "link": "",
+    "link": "https://acsess.onlinelibrary.wiley.com/doi/abs/10.1002/ppj2.70085",
     "pdf": "",
     "doi": "10.1002/ppj2.70085"
+  },
+  {
+    "title": "Integrating UAV-Based High-Throughput Phenotyping, Genomics, and Deep Learning to Improve Prediction of Complex Traits in Winter Wheat",
+    "authors": "Kaushal, S.",
+    "venue": "Ph.D. Dissertation · South Dakota State University",
+    "year": 2026,
+    "link": "https://openprairie.sdstate.edu/cgi/viewcontent.cgi?article=3051&context=etd2",
+    "pdf": "",
+    "doi": ""
   },
   {
     "title": "High-throughput estimation of wheat tiller density using UAV multispectral imagery and attention-based deep learning",
@@ -29,9 +56,9 @@
   {
     "title": "Wheat Spike and Spikelet Detection on Close-range Digital Imagery using Deep Learning",
     "authors": "Ghimire, H., Maimaitijiang, M., Kaushal, S., Koupal, D., Poudel, K., Thapa, S., Subedi, S., Halder, J., Sehgal, S. K.",
-    "venue": "In review · Plant Phenomics",
+    "venue": "SDSU Data Science Symposium 2025 · Poster",
     "year": 2025,
-    "link": "",
+    "link": "https://openprairie.sdstate.edu/datascience_symposium/2025/posters/9/",
     "pdf": "",
     "doi": ""
   },
@@ -40,7 +67,7 @@
     "authors": "Kaushal, S., Gill, H. S., Billah, M. M., Khan, S. N., Halder, J., Bernardo, A., St Amand, P., Bai, G., Glover, K., Maimaitijiang, M., Sehgal, S. K.",
     "venue": "Frontiers in Plant Science, 15, 1410249",
     "year": 2024,
-    "link": "",
+    "link": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1410249/full",
     "pdf": "",
     "doi": "10.3389/fpls.2024.1410249"
   },
