@@ -1,37 +1,37 @@
 [
   {
-    "date": "2022 — Present",
-    "type": "education",
-    "title": "Ph.D. in Plant Breeding & Genetics",
-    "org": "South Dakota State University",
-    "description": "Researching genomic selection, high-throughput phenomics, and AI-driven prediction to accelerate crop improvement across environments."
-  },
-  {
-    "date": "2024",
-    "type": "research",
-    "title": "Genomic Selection Workshop",
-    "org": "South Dakota State University",
-    "description": "Organized and contributed materials for a hands-on workshop on genomic prediction pipelines for breeders."
-  },
-  {
-    "date": "2024",
+    "date": "May 2025 – Dec 2025",
     "type": "work",
-    "title": "NDSU Hackathon",
-    "org": "North Dakota State University",
-    "description": "Built a data-driven solution under time pressure — combining agronomy data with machine learning."
+    "title": "Field Crop Breeding Phenomics Co-op",
+    "org": "Syngenta · Minnesota",
+    "description": "Collected, processed, and analyzed high-throughput phenotypic data from large-scale soybean, corn, and hybrid wheat trials using UAV, satellite imagery, NIR sensors, and digital imaging; built predictive models supporting early selection, line advancement, and product placement."
   },
   {
-    "date": "2020 — 2022",
+    "date": "2022 – 2026",
     "type": "education",
-    "title": "M.S. — Plant Sciences / Genetics",
-    "org": "Update with your Master's institution",
-    "description": "Graduate research in quantitative genetics and field-based phenotyping. (Edit this entry in data/journey.json.)"
+    "title": "Ph.D. in Plant Science",
+    "org": "South Dakota State University · GPA 3.9/4",
+    "description": "Graduate Research Assistant in the Winter Wheat Breeding Program — developing deep learning (CNN & attention-based) and multi-trait genomic-selection models that fuse UAV phenomics, genomics, and environmental data to predict grain yield, protein content, and disease resistance."
   },
   {
-    "date": "2016 — 2020",
+    "date": "2023 – 2024",
     "type": "education",
-    "title": "B.S. — Agriculture",
-    "org": "Update with your undergraduate institution",
-    "description": "Foundations in crop science, statistics, and biology. (Edit this entry in data/journey.json.)"
+    "title": "Graduate Certificate in Data Science",
+    "org": "South Dakota State University",
+    "description": "Formal training in machine learning, statistics, and data engineering to complement quantitative-genetics research."
+  },
+  {
+    "date": "2018 – 2020",
+    "type": "education",
+    "title": "M.S. in Plant Breeding & Genetics",
+    "org": "Punjab Agricultural University, Ludhiana, India · GPA 3.57/4",
+    "description": "Molecular-genetic characterization of irradiated 'B' genome introgression lines of Brassica napus to identify genomic variation and assess introgression stability."
+  },
+  {
+    "date": "2014 – 2018",
+    "type": "education",
+    "title": "B.S. Agriculture (Hons.)",
+    "org": "Lovely Professional University, Phagwara, India · GPA 3.99/4",
+    "description": "Foundations in crop science, genetics, and statistics — graduated with distinction and four consecutive University Merit Awards."
   }
 ]

@@ -1,28 +1,55 @@
 [
   {
-    "title": "Add your publication titles here — full list is on Google Scholar",
-    "authors": "Kaushal, S., et al.",
-    "venue": "Journal name · Volume(Issue), pages",
+    "title": "UAV-based deep transfer learning to improve grain yield prediction in winter wheat across temporal and spatial variability",
+    "authors": "Kaushal, S., Billah, M. M., Singh, M., Koupal, D., Sitaula, P. R., Halder, J., Sidhu, J., Maimaitijiang, M., Sehgal, S. K.",
+    "venue": "The Plant Phenome Journal, 9(1), e70085",
+    "year": 2026,
+    "link": "",
+    "pdf": "",
+    "doi": "10.1002/ppj2.70085"
+  },
+  {
+    "title": "High-throughput estimation of wheat tiller density using UAV multispectral imagery and attention-based deep learning",
+    "authors": "Kaushal, S., Billah, M. M., Halder, J., Maimaitijiang, M., Sehgal, S. K.",
+    "venue": "In review · BMC Plant Biology",
+    "year": 2026,
+    "link": "",
+    "pdf": "",
+    "doi": ""
+  },
+  {
+    "title": "WheatAI v1.0: An AI-Powered High-Throughput Wheat Phenotyping Platform",
+    "authors": "Maimaitijiang, M., Ghimire, H., Thapa, S., Billah, M. M., Sehgal, S., Singh, M., Kaushal, S., Poudel, K., Subedi, S., Janjua, U. U. R., et al.",
+    "venue": "arXiv preprint arXiv:2601.08863",
+    "year": 2026,
+    "link": "https://arxiv.org/abs/2601.08863",
+    "pdf": "",
+    "doi": ""
+  },
+  {
+    "title": "Wheat Spike and Spikelet Detection on Close-range Digital Imagery using Deep Learning",
+    "authors": "Ghimire, H., Maimaitijiang, M., Kaushal, S., Koupal, D., Poudel, K., Thapa, S., Subedi, S., Halder, J., Sehgal, S. K.",
+    "venue": "In review · Plant Phenomics",
     "year": 2025,
-    "link": "https://scholar.google.com/citations?user=bremVZ4AAAAJ&hl=en",
+    "link": "",
     "pdf": "",
     "doi": ""
   },
   {
-    "title": "Genomic selection and environmental typing for crop improvement",
-    "authors": "Kaushal, S., Collaborator, A., Advisor, B.",
-    "venue": "Replace with the real venue (e.g., Frontiers in Plant Science)",
+    "title": "Enhancing the potential of phenomic and genomic prediction in winter wheat breeding using high-throughput phenotyping and deep learning",
+    "authors": "Kaushal, S., Gill, H. S., Billah, M. M., Khan, S. N., Halder, J., Bernardo, A., St Amand, P., Bai, G., Glover, K., Maimaitijiang, M., Sehgal, S. K.",
+    "venue": "Frontiers in Plant Science, 15, 1410249",
     "year": 2024,
-    "link": "https://scholar.google.com/citations?user=bremVZ4AAAAJ&hl=en",
+    "link": "",
     "pdf": "",
-    "doi": ""
+    "doi": "10.3389/fpls.2024.1410249"
   },
   {
-    "title": "High-throughput phenotyping using UAS imagery in breeding trials",
-    "authors": "Kaushal, S., Collaborator, C.",
-    "venue": "Replace with the real venue",
-    "year": 2023,
-    "link": "https://scholar.google.com/citations?user=bremVZ4AAAAJ&hl=en",
+    "title": "Molecular-genetic characterization of irradiated 'B' genome introgression lines of Brassica napus",
+    "authors": "Kaushal, S.",
+    "venue": "M.Sc. Thesis · Punjab Agricultural University, Ludhiana, India",
+    "year": 2020,
+    "link": "",
     "pdf": "",
     "doi": ""
   }

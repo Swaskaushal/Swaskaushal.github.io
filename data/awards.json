@@ -1,30 +1,86 @@
 [
   {
-    "title": "Graduate Research Excellence",
+    "title": "Brookings Area Master Gardeners Scholarship",
+    "org": "Brookings Area Master Gardeners",
+    "year": 2026,
+    "icon": "fa-solid fa-seedling",
+    "story": "Awarded $1,000 in recognition of contributions to plant science and community-oriented horticulture research."
+  },
+  {
+    "title": "Wheat Initiative Phenotyping Travel Award",
+    "org": "European Plant Phenotyping Training School · Bonn, Germany",
+    "year": 2025,
+    "icon": "fa-solid fa-plane-departure",
+    "story": "Selected for the Early Working Group travel award ($1,800) to attend the European Plant Phenotyping Training School in Bonn — connecting with the global phenomics community."
+  },
+  {
+    "title": "Early Career Travel Award",
+    "org": "National Association for Plant Breeding · Hawaii",
+    "year": 2025,
+    "icon": "fa-solid fa-microphone-lines",
+    "story": "Received $1,000 to present my UAV deep-transfer-learning work for grain yield prediction at the national plant breeding meeting."
+  },
+  {
+    "title": "NAPPN Conference Travel Award",
+    "org": "North American Plant Phenotyping Network · Johnston, IA",
+    "year": 2025,
+    "icon": "fa-solid fa-satellite-dish",
+    "story": "Travel support ($1,000) to share high-throughput phenotyping research with the North American phenomics network."
+  },
+  {
+    "title": "Edgar S. McFadden Graduate Scholarship",
     "org": "South Dakota State University",
-    "year": 2024,
-    "icon": "fa-solid fa-award",
-    "story": "Recognized for contributions to plant breeding research. Replace this with your real award and the story behind it — what you worked on and why it mattered."
-  },
-  {
-    "title": "Hackathon Finalist",
-    "org": "NDSU Hackathon",
-    "year": 2024,
-    "icon": "fa-solid fa-medal",
-    "story": "Built a data-driven prototype under a tight deadline. Edit data/awards.json to add the details and your reflection."
-  },
-  {
-    "title": "Travel / Conference Grant",
-    "org": "Professional Society",
     "year": 2023,
-    "icon": "fa-solid fa-plane",
-    "story": "Awarded support to present research at a national meeting. Update with the conference name and what you presented."
+    "icon": "fa-solid fa-award",
+    "story": "A $5,500 departmental scholarship honoring the legacy of wheat breeding pioneer Edgar McFadden — a milestone that affirmed my path in wheat improvement."
   },
   {
-    "title": "Your Award Title",
-    "org": "Awarding Body",
-    "year": 2022,
+    "title": "Gerald O. Mott Award",
+    "org": "Crop Science Society of America",
+    "year": 2023,
+    "icon": "fa-solid fa-star",
+    "story": "Recognized as a meritorious graduate student in crop science by CSSA — one of the honors I'm most proud of."
+  },
+  {
+    "title": "Encompass Scholar",
+    "org": "Crop Science Society of America",
+    "year": 2023,
+    "icon": "fa-solid fa-people-group",
+    "story": "Selected for the CSSA Encompass program supporting the next generation of leaders in the crop sciences."
+  },
+  {
+    "title": "Science Communication Fellowship",
+    "org": "SD EPSCoR · South Dakota Discovery Center",
+    "year": 2023,
+    "icon": "fa-solid fa-comments",
+    "story": "Trained to translate complex plant-science research into engaging stories for the public — a skill I bring to this very blog."
+  },
+  {
+    "title": "AG2PI Travel Award",
+    "org": "AgGenome to Phenome Initiative",
+    "year": 2024,
+    "icon": "fa-solid fa-dna",
+    "story": "A $1,500 award supporting participation in genome-to-phenome research and training events."
+  },
+  {
+    "title": "Dr. Sukhdev Singh Award for Best Essay",
+    "org": "Punjab Agricultural University, India",
+    "year": 2019,
+    "icon": "fa-solid fa-pen-nib",
+    "story": "Honored for the best scientific essay during my Master's — an early sign that I love writing about science as much as doing it."
+  },
+  {
+    "title": "University Merit Fellowship (Masters)",
+    "org": "Punjab Agricultural University, India",
+    "year": 2018,
+    "icon": "fa-solid fa-graduation-cap",
+    "story": "Merit fellowship awarded for academic performance entering the M.Sc. in Plant Breeding & Genetics."
+  },
+  {
+    "title": "University Merit Award (×4)",
+    "org": "Lovely Professional University, India",
+    "year": 2017,
     "icon": "fa-solid fa-trophy",
-    "story": "Add as many awards as you like — just copy one of these blocks in data/awards.json and edit the fields."
+    "story": "Earned the University Merit Award every year (2014–2017) of my undergraduate degree, graduating with a 3.99/4 GPA."
   }
 ]
