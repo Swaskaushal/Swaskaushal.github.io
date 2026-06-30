@@ -1,0 +1,37 @@
+[
+  {
+    "date": "2022 — Present",
+    "type": "education",
+    "title": "Ph.D. in Plant Breeding & Genetics",
+    "org": "South Dakota State University",
+    "description": "Researching genomic selection, high-throughput phenomics, and AI-driven prediction to accelerate crop improvement across environments."
+  },
+  {
+    "date": "2024",
+    "type": "research",
+    "title": "Genomic Selection Workshop",
+    "org": "South Dakota State University",
+    "description": "Organized and contributed materials for a hands-on workshop on genomic prediction pipelines for breeders."
+  },
+  {
+    "date": "2024",
+    "type": "work",
+    "title": "NDSU Hackathon",
+    "org": "North Dakota State University",
+    "description": "Built a data-driven solution under time pressure — combining agronomy data with machine learning."
+  },
+  {
+    "date": "2020 — 2022",
+    "type": "education",
+    "title": "M.S. — Plant Sciences / Genetics",
+    "org": "Update with your Master's institution",
+    "description": "Graduate research in quantitative genetics and field-based phenotyping. (Edit this entry in data/journey.json.)"
+  },
+  {
+    "date": "2016 — 2020",
+    "type": "education",
+    "title": "B.S. — Agriculture",
+    "org": "Update with your undergraduate institution",
+    "description": "Foundations in crop science, statistics, and biology. (Edit this entry in data/journey.json.)"
+  }
+]

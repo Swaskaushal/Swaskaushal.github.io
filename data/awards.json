@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Graduate Research Excellence",
+    "org": "South Dakota State University",
+    "year": 2024,
+    "icon": "fa-solid fa-award",
+    "story": "Recognized for contributions to plant breeding research. Replace this with your real award and the story behind it — what you worked on and why it mattered."
+  },
+  {
+    "title": "Hackathon Finalist",
+    "org": "NDSU Hackathon",
+    "year": 2024,
+    "icon": "fa-solid fa-medal",
+    "story": "Built a data-driven prototype under a tight deadline. Edit data/awards.json to add the details and your reflection."
+  },
+  {
+    "title": "Travel / Conference Grant",
+    "org": "Professional Society",
+    "year": 2023,
+    "icon": "fa-solid fa-plane",
+    "story": "Awarded support to present research at a national meeting. Update with the conference name and what you presented."
+  },
+  {
+    "title": "Your Award Title",
+    "org": "Awarding Body",
+    "year": 2022,
+    "icon": "fa-solid fa-trophy",
+    "story": "Add as many awards as you like — just copy one of these blocks in data/awards.json and edit the fields."
+  }
+]

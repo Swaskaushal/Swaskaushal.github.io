@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Welcome — why I started this blog",
+    "date": "2026-06-29",
+    "readTime": "3 min",
+    "excerpt": "A quick hello, what this space is for, and the kinds of things I'll be writing about each week — papers, ideas, and research life.",
+    "tags": ["Intro", "Research Life"],
+    "file": "2026-06-29-welcome.md"
+  },
+  {
+    "title": "Paper notes: Genomic selection meets environmental typing",
+    "date": "2026-06-22",
+    "readTime": "5 min",
+    "excerpt": "This week's read on combining genomic prediction with environmental covariates (think EnvRtype) to predict performance across environments.",
+    "tags": ["Paper Notes", "Genomic Selection", "Phenomics"],
+    "file": "2026-06-22-gs-envtyping.md"
+  }
+]

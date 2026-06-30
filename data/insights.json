@@ -1,0 +1,14 @@
+{
+  "focus": {
+    "labels": ["Plant Breeding", "Phenomics", "Quant. Genetics", "AI / ML", "Data Science", "Field Trials"],
+    "values": [95, 88, 85, 82, 80, 78]
+  },
+  "pubsByYear": {
+    "labels": ["2021", "2022", "2023", "2024", "2025"],
+    "values": [1, 2, 4, 5, 5]
+  },
+  "skills": {
+    "labels": ["Python", "R", "PyTorch / Deep Learning", "Genomic Selection", "UAS Phenotyping", "Statistics"],
+    "values": [92, 88, 80, 85, 82, 86]
+  }
+}

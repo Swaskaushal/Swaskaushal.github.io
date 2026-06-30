@@ -1,0 +1,47 @@
+[
+  {
+    "title": "UAS Certification Hub",
+    "description": "A centralized resource of documents and curated videos for Unmanned Aircraft Systems (UAS / drone) certification — built for the research and phenotyping community.",
+    "icon": "fa-solid fa-helicopter",
+    "categories": ["Phenomics", "Resources"],
+    "tags": ["UAS", "Drones", "Phenotyping"],
+    "repo": "https://github.com/Swaskaushal/UAS-Certification-Hub",
+    "demo": ""
+  },
+  {
+    "title": "Research Paper Downloader",
+    "description": "A Python tool that automates collecting research papers from PubMed and preprint servers, scores them by keyword relevance, and exports organized summaries to Excel.",
+    "icon": "fa-solid fa-file-arrow-down",
+    "categories": ["AI / Tools", "Python"],
+    "tags": ["Python", "NLP", "Automation", "PubMed"],
+    "repo": "https://github.com/Swaskaushal/Research-Paper-Downloader",
+    "demo": ""
+  },
+  {
+    "title": "Genomic Selection Workshop 2024",
+    "description": "Teaching materials and code for a hands-on genomic selection workshop — covering prediction models and breeding pipelines.",
+    "icon": "fa-solid fa-dna",
+    "categories": ["Quant. Genetics", "Teaching"],
+    "tags": ["Genomic Selection", "R", "Breeding"],
+    "repo": "https://github.com/Swaskaushal/2024-Genoimic-Selection-Workshop",
+    "demo": ""
+  },
+  {
+    "title": "NDSU Hackathon 2024",
+    "description": "A rapid-prototype data-science solution built during the 2024 NDSU hackathon, blending agronomy data with machine learning.",
+    "icon": "fa-solid fa-laptop-code",
+    "categories": ["AI / Tools"],
+    "tags": ["Machine Learning", "Data Science"],
+    "repo": "https://github.com/Swaskaushal/Hackathon_2024_NDSU",
+    "demo": ""
+  },
+  {
+    "title": "WeatherScope Dashboard",
+    "description": "An interactive Streamlit dashboard for downloading weather data (Open-Meteo & NASA POWER) with maps, time-series and EnvRtype-compatible environmental covariates.",
+    "icon": "fa-solid fa-cloud-sun-rain",
+    "categories": ["AI / Tools", "Phenomics"],
+    "tags": ["Streamlit", "EnvRtype", "Phenomics", "Python"],
+    "repo": "",
+    "demo": ""
+  }
+]
