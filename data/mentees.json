@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Mentee Name",
+    "role": "MS Student",
+    "university": "South Dakota State University",
+    "photo": "assets/mentees/mentee1.jpg",
+    "linkedin": "",
+    "scholar": "",
+    "email": ""
+  },
+  {
+    "name": "Mentee Name",
+    "role": "PhD Student",
+    "university": "Punjab Agricultural University",
+    "photo": "assets/mentees/mentee2.jpg",
+    "linkedin": "",
+    "scholar": "",
+    "email": ""
+  },
+  {
+    "name": "Mentee Name",
+    "role": "Undergraduate Researcher",
+    "university": "Lovely Professional University",
+    "photo": "assets/mentees/mentee3.jpg",
+    "linkedin": "",
+    "scholar": "",
+    "email": ""
+  }
+]

@@ -22,6 +22,8 @@ Built as a static site (HTML + CSS + vanilla JS) so it's fast, free to host on
 | **Insights** | Cool charts: research focus, publications/year, skills |
 | **Blog** | Weekly posts written in Markdown, opened in a modal reader |
 | **Awards** | Honours & recognition with the story behind each |
+| **Mentorship** | People you mentor — photo, name, role & university |
+| **Gallery** | Photo wall with captions & dates (click to enlarge) |
 | **Contact** | All your social/professional links |
 | Extras | Dark/light theme, scroll progress, mobile menu, animations |
 
@@ -42,11 +44,47 @@ Swaskaushal.github.io/
     ├── projects.json       ← project cards
     ├── publications.json   ← publications
     ├── awards.json         ← awards
+    ├── mentees.json        ← people you mentor
+    ├── gallery.json        ← photo gallery (caption + date)
     ├── insights.json       ← chart numbers
     └── blog/
         ├── posts.json      ← list of blog posts
         └── *.md            ← one markdown file per post
 ```
+
+---
+
+## 🚀 Everyday updates — the easy way
+
+Two PowerShell helpers live in the repo root. Open PowerShell in this folder and run:
+
+**Publish any change to the live site:**
+```powershell
+./publish.ps1 "what I changed"
+```
+It checks your JSON files for typos, then commits & pushes. Your site refreshes in ~1 min.
+
+**Update your CV** (converts a Word file to the PDF the site links to):
+```powershell
+./update-cv.ps1 "C:\path\to\CV_Kaushal.docx"          # just convert
+./update-cv.ps1 "C:\path\to\CV_Kaushal.docx" -Publish  # convert + publish
+```
+
+## 👥 Add people you mentor
+Edit `data/mentees.json` and put their photos in `assets/mentees/`:
+```json
+{ "name": "Jane Doe", "role": "MS Student", "university": "SDSU",
+  "photo": "assets/mentees/jane.jpg", "linkedin": "", "email": "" }
+```
+No photo yet? It shows an automatic initials avatar.
+
+## 🖼️ Add gallery photos
+Put images in `assets/gallery/` and add an entry to `data/gallery.json`:
+```json
+{ "image": "assets/gallery/fieldday.jpg",
+  "caption": "Field phenotyping day", "date": "2025-06-15" }
+```
+Newest photos show first; click any photo to view it large.
 
 ---
 

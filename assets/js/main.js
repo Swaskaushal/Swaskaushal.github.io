@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   loadPublications();
   loadBlog();
   loadAwards();
+  loadMentees();
+  loadGallery();
   initCharts();
 });
 
@@ -303,6 +305,78 @@ async function loadAwards() {
   } catch (e) {
     grid.innerHTML = `<p class="loading">Could not load awards.</p>`;
   }
+}
+
+/* ── Mentorship ──────────────────────────────────────────────────── */
+async function loadMentees() {
+  const grid = document.getElementById('mentor-grid');
+  if (!grid) return;
+  grid.innerHTML = `<p class="loading">Loading…</p>`;
+  try {
+    const mentees = await getJSON('data/mentees.json');
+    grid.innerHTML = mentees.map(m => `
+      <article class="mentor-card">
+        <div class="mentor-photo"><img src="${escapeAttr(m.photo || 'assets/profile.jpg')}" alt="${escapeAttr(m.name)}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=2563eb&color=fff&size=200'"></div>
+        <h3>${escapeHtml(m.name)}</h3>
+        ${m.role ? `<p class="mentor-role">${escapeHtml(m.role)}</p>` : ''}
+        <p class="mentor-univ">${escapeHtml(m.university || '')}</p>
+        <div class="mentor-links">
+          ${m.linkedin ? `<a href="${escapeAttr(m.linkedin)}" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>` : ''}
+          ${m.scholar ? `<a href="${escapeAttr(m.scholar)}" target="_blank" rel="noopener" title="Scholar"><i class="fa-solid fa-graduation-cap"></i></a>` : ''}
+          ${m.email ? `<a href="mailto:${escapeAttr(m.email)}" title="Email"><i class="fa-solid fa-envelope"></i></a>` : ''}
+        </div>
+      </article>`).join('');
+    grid.querySelectorAll('.mentor-card').forEach(observeReveal);
+  } catch (e) {
+    grid.innerHTML = `<p class="loading">Add the people you mentor in <code>data/mentees.json</code>.</p>`;
+  }
+}
+
+/* ── Gallery + lightbox ──────────────────────────────────────────── */
+let _gallery = [];
+async function loadGallery() {
+  const grid = document.getElementById('gallery-grid');
+  if (!grid) return;
+  grid.innerHTML = `<p class="loading">Loading…</p>`;
+  try {
+    _gallery = await getJSON('data/gallery.json');
+    _gallery.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+    grid.innerHTML = _gallery.map((g, i) => `
+      <figure class="gallery-item" data-idx="${i}">
+        <img src="${escapeAttr(g.image)}" alt="${escapeAttr(g.caption || 'Photo')}" loading="lazy" onerror="this.src='https://picsum.photos/seed/'+${i}+'/600/420'">
+        <figcaption class="gallery-cap">
+          <span class="g-text">${escapeHtml(g.caption || '')}</span>
+          ${g.date ? `<span class="g-date">${formatDate(g.date)}</span>` : ''}
+        </figcaption>
+      </figure>`).join('');
+    grid.querySelectorAll('.gallery-item').forEach(item =>
+      item.addEventListener('click', () => openLightbox(+item.dataset.idx))
+    );
+  } catch (e) {
+    grid.innerHTML = `<p class="loading">Add photos in <code>data/gallery.json</code> (images go in <code>assets/gallery/</code>).</p>`;
+  }
+  initLightbox();
+}
+function initLightbox() {
+  const lb = document.getElementById('lightbox');
+  if (!lb || lb.dataset.bound) return;
+  lb.dataset.bound = '1';
+  lb.querySelectorAll('[data-lbclose]').forEach(el => el.addEventListener('click', closeLightbox));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+}
+function openLightbox(idx) {
+  const g = _gallery[idx];
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = g.image;
+  document.getElementById('lightbox-img').alt = g.caption || '';
+  document.getElementById('lightbox-cap').textContent =
+    (g.caption || '') + (g.date ? `  ·  ${formatDate(g.date)}` : '');
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 /* ── Charts (Chart.js) ───────────────────────────────────────────── */
