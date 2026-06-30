@@ -4,23 +4,14 @@
    ════════════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initYear();
-  initTheme();
-  initNav();
-  initScrollFx();
-  initReveal();
-  initCounters();
-  initHeroCanvas();
-  initTyped();
-  initTilt();
-  loadJourney();
-  loadProjects();
-  loadPublications();
-  loadBlog();
-  loadAwards();
-  loadMentees();
-  loadGallery();
-  initCharts();
+  // Each step is isolated so a single failure can never blank the whole page.
+  const run = fn => { try { fn(); } catch (err) { console.error(`[init] ${fn.name} failed:`, err); } };
+  [
+    initYear, initTheme, initNav, initScrollFx, initReveal, initCounters,
+    initHeroCanvas, initTyped, initTilt,
+    loadJourney, loadProjects, loadPublications, loadBlog, loadAwards,
+    loadMentees, loadGallery, initCharts
+  ].forEach(run);
 });
 
 /* ── Footer year ─────────────────────────────────────────────────── */
