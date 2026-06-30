@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollFx();
   initReveal();
   initCounters();
+  initHeroCanvas();
+  initTyped();
+  initTilt();
   loadJourney();
   loadProjects();
   loadPublications();
@@ -484,4 +487,127 @@ function hexA(hex, a) {
   if (hex.length === 3) hex = hex.split('').map(x => x + x).join('');
   const r = parseInt(hex.slice(0, 2), 16), g = parseInt(hex.slice(2, 4), 16), b = parseInt(hex.slice(4, 6), 16);
   return `rgba(${r},${g},${b},${a})`;
+}
+
+/* ── Hero particle field (mouse-reactive, lightweight) ───────────── */
+function initHeroCanvas() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = canvas.getContext('2d');
+  const hero = canvas.parentElement;
+  let w, h, dpr, particles = [], raf;
+  const mouse = { x: -9999, y: -9999 };
+
+  function brand() {
+    const css = getComputedStyle(document.documentElement);
+    return {
+      a: css.getPropertyValue('--brand').trim() || '#2563eb',
+      b: css.getPropertyValue('--brand-2').trim() || '#06b6d4'
+    };
+  }
+  let colors = brand();
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = hero.clientWidth; h = hero.clientHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = Math.min(70, Math.round(w / 20));
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+      r: Math.random() * 1.8 + 1
+    }));
+  }
+
+  function step() {
+    ctx.clearRect(0, 0, w, h);
+    for (const p of particles) {
+      // gentle attraction toward cursor
+      const dx = mouse.x - p.x, dy = mouse.y - p.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < 26000) { p.vx += dx / d2 * 6; p.vy += dy / d2 * 6; }
+      p.vx *= 0.96; p.vy *= 0.96;
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      p.x = Math.max(0, Math.min(w, p.x));
+      p.y = Math.max(0, Math.min(h, p.y));
+    }
+    // links
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 120) {
+          ctx.strokeStyle = hexA(colors.a, (1 - dist / 120) * 0.22);
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    }
+    // dots
+    for (const p of particles) {
+      ctx.fillStyle = hexA(colors.b, 0.65);
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    raf = requestAnimationFrame(step);
+  }
+
+  hero.addEventListener('pointermove', e => {
+    const r = hero.getBoundingClientRect();
+    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+  });
+  hero.addEventListener('pointerleave', () => { mouse.x = -9999; mouse.y = -9999; });
+  window.addEventListener('resize', resize, { passive: true });
+  document.getElementById('theme-toggle')?.addEventListener('click', () => { colors = brand(); });
+
+  // pause when off-screen to save battery
+  const io = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { if (!raf) raf = requestAnimationFrame(step); }
+    else { cancelAnimationFrame(raf); raf = null; }
+  });
+  resize();
+  io.observe(hero);
+}
+
+/* ── Typed rotating role ─────────────────────────────────────────── */
+function initTyped() {
+  const el = document.getElementById('typed-role');
+  if (!el) return;
+  const phrases = ['better varieties', 'yield predictions', 'phenomic insights', 'genetic gain', 'smarter selections'];
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = phrases[0]; return; }
+  let pi = 0, ci = 0, deleting = false;
+  function tick() {
+    const word = phrases[pi];
+    el.textContent = word.slice(0, ci);
+    if (!deleting && ci < word.length) { ci++; setTimeout(tick, 70); }
+    else if (!deleting && ci === word.length) { deleting = true; setTimeout(tick, 1500); }
+    else if (deleting && ci > 0) { ci--; setTimeout(tick, 35); }
+    else { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 250); }
+  }
+  tick();
+}
+
+/* ── 3D tilt on cards (delegated, pointer only) ──────────────────── */
+function initTilt() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(hover: none)').matches) return;
+  const SEL = '.project-card, .award-card, .mentor-card';
+  let active = null;
+  function reset(el) { el.style.transition = 'transform .35s ease'; el.style.transform = ''; el.style.willChange = ''; }
+  document.addEventListener('pointermove', e => {
+    const card = e.target.closest(SEL);
+    if (card !== active) { if (active) reset(active); active = card; if (card) { card.style.willChange = 'transform'; card.style.transition = 'transform .08s ease-out'; } }
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    const max = 7;
+    card.style.transform = `perspective(820px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg) translateY(-4px)`;
+  }, { passive: true });
+  document.addEventListener('pointercancel', () => { if (active) { reset(active); active = null; } });
 }

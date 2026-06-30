@@ -131,6 +131,10 @@ code {
   background-image: radial-gradient(var(--border) 1px, transparent 1px);
   background-size: 26px 26px; opacity: .4; mask-image: linear-gradient(180deg, #000, transparent 80%);
 }
+#hero-canvas {
+  position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
 .hero-content {
   position: relative; z-index: 1; max-width: var(--maxw); margin: 0 auto; width: 100%;
   display: grid; grid-template-columns: 1.15fr .85fr; gap: 50px; align-items: center;
@@ -151,6 +155,19 @@ code {
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 .hero h1 { font-size: clamp(2.4rem, 5.5vw, 3.9rem); font-weight: 800; margin-bottom: 16px; }
+.hero-typed {
+  font-family: 'JetBrains Mono', monospace; font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600; color: var(--text-soft); margin-bottom: 14px; min-height: 1.6em;
+}
+.typed-role {
+  background: var(--grad); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; font-weight: 700;
+}
+.type-caret {
+  display: inline-block; width: 2px; height: 1.05em; margin-left: 2px; vertical-align: -0.18em;
+  background: var(--brand); animation: caretBlink 1s steps(1) infinite;
+}
+@keyframes caretBlink { 50% { opacity: 0; } }
 .grad-text {
   background: var(--grad); -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
