@@ -1,14 +1,6 @@
 # Swas Kaushal - Personal Portfolio Website
 
-A modern, responsive personal/academic website for **Swas Kaushal** - PhD researcher in
-Plant Breeding & Genetics, Phenomics, Quantitative Genetics, and AI.
-
 🔗 **Live site (after deploy):** https://swaskaushal.github.io
-
-Built as a static site (HTML + CSS + vanilla JS) so it's fast, free to host on
-**GitHub Pages**, and easy to update - all content lives in simple JSON/Markdown files.
-
----
 
 ## ✨ Features
 
