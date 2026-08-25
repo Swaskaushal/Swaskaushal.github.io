@@ -469,7 +469,7 @@ function escapeHtml(s) {
 }
 function escapeAttr(s) { return escapeHtml(s); }
 function formatDate(d) {
-  const dt = new Date(d);
+  const dt = new Date(/^\d{4}-\d{2}-\d{2}$/.test(d) ? `${d}T00:00:00` : d);
   if (isNaN(dt)) return d;
   return dt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
