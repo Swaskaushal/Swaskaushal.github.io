@@ -230,6 +230,7 @@ async function loadBlog() {
   try {
     _posts = await getJSON('data/blog/posts.json');
     _posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    renderLatestPost(_posts[0]);
     grid.innerHTML = _posts.map((p, i) => `
       <article class="blog-card" data-idx="${i}">
         <div class="blog-cover"></div>
@@ -246,19 +247,43 @@ async function loadBlog() {
       </article>`).join('');
     grid.querySelectorAll('.blog-card').forEach(card => {
       observeReveal(card);
-      card.addEventListener('click', () => openPost(+card.dataset.idx));
+      card.addEventListener('click', () => openPost(+card.dataset.idx, true));
     });
+    const requestedPost = new URLSearchParams(location.search).get('post');
+    const requestedIndex = _posts.findIndex(post => postSlug(post) === requestedPost);
+    if (requestedIndex >= 0) openPost(requestedIndex);
   } catch (e) {
     grid.innerHTML = `<p class="loading">No posts yet — add some in <code>data/blog/</code>.</p>`;
   }
   initModal();
 }
-async function openPost(idx) {
+function renderLatestPost(post) {
+  if (!post) return;
+  const link = document.getElementById('latest-post-link');
+  document.getElementById('latest-post-title').textContent = post.title;
+  document.getElementById('latest-post-excerpt').textContent = post.excerpt || '';
+  document.getElementById('latest-post-meta').innerHTML =
+    `<i class="fa-regular fa-calendar"></i> ${formatDate(post.date)} &nbsp;·&nbsp; ${escapeHtml(post.readTime || '3 min')} read`;
+  link.href = `?post=${encodeURIComponent(postSlug(post))}`;
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    openPost(0, true);
+  });
+}
+function postSlug(post) {
+  return post.file.replace(/\.md$/, '');
+}
+async function openPost(idx, updateUrl = false) {
   const post = _posts[idx];
   const modal = document.getElementById('post-modal');
   const body = document.getElementById('post-content');
   body.innerHTML = `<p class="loading">Loading…</p>`;
   openModal();
+  if (updateUrl) {
+    const url = new URL(location.href);
+    url.searchParams.set('post', postSlug(post));
+    history.replaceState(null, '', url);
+  }
   try {
     const md = await fetch(`data/blog/${post.file}`, { cache: 'no-cache' }).then(r => r.text());
     body.innerHTML =

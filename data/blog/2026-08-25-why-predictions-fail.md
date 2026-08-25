@@ -37,7 +37,7 @@ Most importantly, its seasonal maps represent **probabilities, not certainties**
 A useful prediction should not merely say what will happen. It should tell us:
 
 - how likely the outcome is;
-- what range of outcomes is plausible;
+- what range of outcomes is possible;
 - which assumptions support the estimate;
 - what evidence would change the conclusion; and
 - what the consequences would be if the prediction were wrong.
