@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Each step is isolated so a single failure can never blank the whole page.
   const run = fn => { try { fn(); } catch (err) { console.error(`[init] ${fn.name} failed:`, err); } };
   [
-    initYear, initTheme, initNav, initScrollFx, initReveal, initCounters,
+    initYear, initTheme, initNav, initScrollFx, initScaleRail, initReveal, initCounters,
     initHeroCanvas, initTyped, initTilt,
     loadJourney, loadProjects, loadPublications, loadBlog, loadAwards,
     loadMentees, loadGallery, initCharts
@@ -76,6 +76,29 @@ function initScrollFx() {
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+}
+
+/* ── Scale rail — altimeter that descends satellite → genome ──────── */
+function initScaleRail() {
+  const rail = document.getElementById('scale-rail');
+  const fill = document.getElementById('rail-fill');
+  if (!rail || !fill) return;
+  const stops = [...rail.querySelectorAll('.rail-stop')];
+  const marks = stops.map(s => parseFloat(s.dataset.progress) || 0);
+  const trackH = () => rail.getBoundingClientRect().height - 20; // minus vertical padding
+
+  const update = () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+    fill.style.height = (p * trackH()) + 'px';
+    // nearest stop to the current progress becomes active
+    let nearest = 0, best = Infinity;
+    marks.forEach((m, i) => { const d = Math.abs(m - p); if (d < best) { best = d; nearest = i; } });
+    stops.forEach((s, i) => s.classList.toggle('active', i === nearest));
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
 }
 
 /* ── Reveal-on-scroll ────────────────────────────────────────────── */
@@ -505,21 +528,22 @@ function hexA(hex, a) {
   return `rgba(${r},${g},${b},${a})`;
 }
 
-/* ── Hero particle field (mouse-reactive, lightweight) ───────────── */
+/* ── Hero: satellite scan over field plots (lightweight, reactive) ─ */
 function initHeroCanvas() {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const ctx = canvas.getContext('2d');
   const hero = canvas.parentElement;
-  let w, h, dpr, particles = [], raf;
+  let w, h, dpr, particles = [], plots = [], scanY = 0, raf;
   const mouse = { x: -9999, y: -9999 };
 
   function brand() {
     const css = getComputedStyle(document.documentElement);
     return {
-      a: css.getPropertyValue('--brand').trim() || '#2563eb',
-      b: css.getPropertyValue('--brand-2').trim() || '#06b6d4'
+      a: css.getPropertyValue('--brand').trim() || '#0e8f6e',
+      b: css.getPropertyValue('--brand-2').trim() || '#12b3a6',
+      c: css.getPropertyValue('--veg').trim() || '#63c132'
     };
   }
   let colors = brand();
@@ -530,20 +554,50 @@ function initHeroCanvas() {
     canvas.width = w * dpr; canvas.height = h * dpr;
     canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = Math.min(70, Math.round(w / 20));
+
+    // sensor constellation
+    const count = Math.min(64, Math.round(w / 22));
     particles = Array.from({ length: count }, () => ({
       x: Math.random() * w, y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+      vx: (Math.random() - 0.5) * 0.32, vy: (Math.random() - 0.5) * 0.32,
       r: Math.random() * 1.8 + 1
     }));
+
+    // faint field-plot rectangles (breeding trial grid) with NDVI "vigour"
+    const cell = 66, cols = Math.ceil(w / cell) + 1, rows = Math.ceil(h / cell) + 1;
+    plots = [];
+    for (let i = 0; i < cols; i++)
+      for (let j = 0; j < rows; j++)
+        plots.push({ x: i * cell, y: j * cell, s: cell - 8, v: Math.random(), ph: Math.random() * Math.PI * 2 });
+    scanY = 0;
   }
 
-  function step() {
+  function step(t) {
     ctx.clearRect(0, 0, w, h);
+
+    // 1) field-plot vigour grid (very subtle) — brightens as the scan passes
+    for (const p of plots) {
+      const near = 1 - Math.min(1, Math.abs(p.y - scanY) / 130);
+      const base = 0.03 + 0.05 * (0.5 + 0.5 * Math.sin(t * 0.0006 + p.ph));
+      const alpha = base + near * 0.16 * p.v;
+      ctx.fillStyle = hexA(p.v > 0.5 ? colors.c : colors.a, alpha);
+      ctx.fillRect(p.x + 4, p.y + 4, p.s, p.s);
+    }
+
+    // 2) push-broom scan line sweeping downward
+    scanY += 0.9;
+    if (scanY > h + 140) scanY = -140;
+    const g = ctx.createLinearGradient(0, scanY - 60, 0, scanY + 60);
+    g.addColorStop(0, hexA(colors.b, 0));
+    g.addColorStop(0.5, hexA(colors.b, 0.14));
+    g.addColorStop(1, hexA(colors.b, 0));
+    ctx.fillStyle = g; ctx.fillRect(0, scanY - 60, w, 120);
+    ctx.strokeStyle = hexA(colors.b, 0.35); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, scanY); ctx.lineTo(w, scanY); ctx.stroke();
+
+    // 3) sensor constellation (mouse-reactive) + links
     for (const p of particles) {
-      // gentle attraction toward cursor
-      const dx = mouse.x - p.x, dy = mouse.y - p.y;
-      const d2 = dx * dx + dy * dy;
+      const dx = mouse.x - p.x, dy = mouse.y - p.y, d2 = dx * dx + dy * dy;
       if (d2 < 26000) { p.vx += dx / d2 * 6; p.vy += dy / d2 * 6; }
       p.vx *= 0.96; p.vy *= 0.96;
       p.x += p.vx; p.y += p.vy;
@@ -552,22 +606,19 @@ function initHeroCanvas() {
       p.x = Math.max(0, Math.min(w, p.x));
       p.y = Math.max(0, Math.min(h, p.y));
     }
-    // links
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const a = particles[i], b = particles[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 120) {
-          ctx.strokeStyle = hexA(colors.a, (1 - dist / 120) * 0.22);
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (dist < 118) {
+          ctx.strokeStyle = hexA(colors.a, (1 - dist / 118) * 0.22);
           ctx.lineWidth = 1;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
     }
-    // dots
     for (const p of particles) {
-      ctx.fillStyle = hexA(colors.b, 0.65);
+      ctx.fillStyle = hexA(colors.c, 0.7);
       ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
     }
     raf = requestAnimationFrame(step);
