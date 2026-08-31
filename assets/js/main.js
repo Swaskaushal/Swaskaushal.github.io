@@ -23,8 +23,7 @@ function initYear() {
 function initTheme() {
   const btn = document.getElementById('theme-toggle');
   const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = saved || (prefersDark ? 'dark' : 'light');
+  const theme = saved || 'dark';
   applyTheme(theme);
   btn.addEventListener('click', () => {
     const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';

@@ -36,13 +36,13 @@
     "doi": ""
   },
   {
-    "title": "High-throughput estimation of wheat tiller density using UAV multispectral imagery and attention-based deep learning",
+    "title": "High-Throughput Estimation of Wheat Tiller Density Using UAV-Derived Spectral-Textural Features and Attention-Based Deep Learning",
     "authors": "Kaushal, S., Billah, M. M., Halder, J., Maimaitijiang, M., Sehgal, S. K.",
-    "venue": "In review · BMC Plant Biology",
+    "venue": "Smart Agricultural Technology, 102521",
     "year": 2026,
-    "link": "",
+    "link": "https://www.sciencedirect.com/science/article/pii/S277237552600746X",
     "pdf": "",
-    "doi": ""
+    "doi": "10.1016/j.atech.2026.102521"
   },
   {
     "title": "WheatAI v1.0: An AI-Powered High-Throughput Wheat Phenotyping Platform",
